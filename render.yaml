@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: study-mark
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeployTrigger: checksPass
+    healthCheckPath: /health
+    envVars:
+      - key: CI_ENVIRONMENT
+        value: production

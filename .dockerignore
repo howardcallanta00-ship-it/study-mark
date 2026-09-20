@@ -1,0 +1,13 @@
+.git
+.github
+.env
+.idea
+.vscode
+build
+tests
+vendor
+writable/cache/*
+writable/debugbar/*
+writable/logs/*
+writable/session/*
+writable/uploads/*

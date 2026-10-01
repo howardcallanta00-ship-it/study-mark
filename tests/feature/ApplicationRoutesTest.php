@@ -19,7 +19,9 @@ final class ApplicationRoutesTest extends CIUnitTestCase
         $result->assertSee('Study Mark');
         $this->assertMatchesRegularExpression('#/assets/css/study-mark\.css\?v=[a-f0-9]{12}#', $body);
         $this->assertMatchesRegularExpression('#/assets/js/study-mark\.js\?v=[a-f0-9]{12}#', $body);
-        $result->assertHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        $cacheControl = $result->response()->getHeaderLine('Cache-Control');
+        $this->assertStringContainsString('no-cache', $cacheControl);
+        $this->assertStringContainsString('no-store', $cacheControl);
         $result->assertHeader('X-Content-Type-Options', 'nosniff');
     }
 

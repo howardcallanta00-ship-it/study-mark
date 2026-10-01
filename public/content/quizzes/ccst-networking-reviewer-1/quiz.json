@@ -1,0 +1,1557 @@
+{
+  "schemaVersion": 1,
+  "id": "ccst-networking-reviewer-1",
+  "version": 1,
+  "title": "CCST Networking Reviewer 1",
+  "description": "Networking review questions covering standard concepts, security, endpoints and media types, infrastructure, and troubleshooting for CCST preparation.",
+  "accent": "#5b5ce2",
+  "icon": "network",
+  "defaults": {
+    "shuffleQuestions": true,
+    "shuffleChoices": true
+  },
+  "questions": [
+    {
+      "id": "q001",
+      "type": "multiple_choice",
+      "prompt": "How is the following IP address written using CIDR notation?\nIP address: 192.168.0.16\nSubnet mask: 255.255.255.240",
+      "choices": [
+        {
+          "id": "q001-192-168-0-16-30",
+          "text": "192.168.0.16/30"
+        },
+        {
+          "id": "q001-192-168-0-16-15",
+          "text": "192.168.0.16/15"
+        },
+        {
+          "id": "q001-192-168-0-16-28",
+          "text": "192.168.0.16/28"
+        },
+        {
+          "id": "q001-192-168-0-16-24",
+          "text": "192.168.0.16/24"
+        }
+      ],
+      "correctChoiceId": "q001-192-168-0-16-28",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q002",
+      "type": "multiple_choice",
+      "prompt": "What is the CIDR prefix notation for a subnet mask of 255.255.0.0?",
+      "choices": [
+        {
+          "id": "q002-24",
+          "text": "/24"
+        },
+        {
+          "id": "q002-8",
+          "text": "/8"
+        },
+        {
+          "id": "q002-16",
+          "text": "/16"
+        },
+        {
+          "id": "q002-32",
+          "text": "32"
+        }
+      ],
+      "correctChoiceId": "q002-16",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q003",
+      "type": "multiple_choice",
+      "prompt": "Which address is included in the 192.168.200.0/24 network?",
+      "choices": [
+        {
+          "id": "q003-192-168-199-13",
+          "text": "192.168.199.13"
+        },
+        {
+          "id": "q003-192-168-200-13",
+          "text": "192.168.200.13"
+        },
+        {
+          "id": "q003-192-168-201-13",
+          "text": "192.168.201.13"
+        },
+        {
+          "id": "q003-192-168-1-13",
+          "text": "192.168.1.13"
+        }
+      ],
+      "correctChoiceId": "q003-192-168-200-13",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q004",
+      "type": "multiple_choice",
+      "prompt": "What is the most compressed valid format of the IPv6 address 2001:0db8:0000:0016:0000:001b:2000:0056?",
+      "choices": [
+        {
+          "id": "q004-2001-db8-16-1b-2-56",
+          "text": "2001:db8::16::1b:2:56"
+        },
+        {
+          "id": "q004-2001-db8-16-1b-2000-56",
+          "text": "2001:db8::16::1b:2000:56"
+        },
+        {
+          "id": "q004-2001-db8-16-1b-2-56-3",
+          "text": "2001:db8:16::1b:2:56"
+        },
+        {
+          "id": "q004-2001-db8-0-16-1b-2000-56",
+          "text": "2001:db8:0:16::1b:2000:56"
+        }
+      ],
+      "correctChoiceId": "q004-2001-db8-0-16-1b-2000-56",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q005",
+      "type": "multiple_choice",
+      "prompt": "Which address is included in the 192.168.200.0/24 network?",
+      "choices": [
+        {
+          "id": "q005-192-168-200-13",
+          "text": "192.168.200.13"
+        },
+        {
+          "id": "q005-192-168-201-13",
+          "text": "192.168.201.13"
+        },
+        {
+          "id": "q005-192-168-1-13",
+          "text": "192.168.1.13"
+        },
+        {
+          "id": "q005-192-168-199-13",
+          "text": "192.168.199.13"
+        }
+      ],
+      "correctChoiceId": "q005-192-168-200-13",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q006",
+      "type": "multiple_choice",
+      "prompt": "Which address is a link-local IPv6 address?",
+      "choices": [
+        {
+          "id": "q006-fdf8-f535-82ef-53",
+          "text": "FDF8:F535:82EF::53"
+        },
+        {
+          "id": "q006-fe80-261-2efe-fe10-765",
+          "text": "FE80::261:2EFE:FE10:765"
+        },
+        {
+          "id": "q006-2001-0db8-85a3-0000-0000-8a2e-0370-7334",
+          "text": "2001:0db8:85a3:0000:0000:8a2e:0370:7334"
+        },
+        {
+          "id": "q006-2401-db00-21-70e4-face-0-3-0",
+          "text": "2401:db00:21:70e4:face:0:3:0"
+        }
+      ],
+      "correctChoiceId": "q006-fe80-261-2efe-fe10-765",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q007",
+      "type": "multiple_choice",
+      "prompt": "At which OSI layer is the data stream broken up into segments that include source and destination port numbers?",
+      "choices": [
+        {
+          "id": "q007-network",
+          "text": "Network"
+        },
+        {
+          "id": "q007-session",
+          "text": "Session"
+        },
+        {
+          "id": "q007-transport",
+          "text": "Transport"
+        },
+        {
+          "id": "q007-data-link",
+          "text": "Data Link"
+        }
+      ],
+      "correctChoiceId": "q007-transport",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q008",
+      "type": "multiple_choice",
+      "prompt": "Which information is included in the header of a UDP segment?",
+      "choices": [
+        {
+          "id": "q008-port-numbers",
+          "text": "Port Numbers"
+        },
+        {
+          "id": "q008-ip-address",
+          "text": "IP Address"
+        },
+        {
+          "id": "q008-sequence-numbers",
+          "text": "Sequence Numbers"
+        },
+        {
+          "id": "q008-mac-address",
+          "text": "MAC Address"
+        }
+      ],
+      "correctChoiceId": "q008-port-numbers",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q009",
+      "type": "multiple_choice",
+      "prompt": "During the data encapsulation process, which OSI layer adds a header that contains MAC addressing information and a trailer used for error checking?",
+      "choices": [
+        {
+          "id": "q009-network",
+          "text": "Network"
+        },
+        {
+          "id": "q009-session",
+          "text": "Session"
+        },
+        {
+          "id": "q009-transport",
+          "text": "Transport"
+        },
+        {
+          "id": "q009-data-link",
+          "text": "Data Link"
+        }
+      ],
+      "correctChoiceId": "q009-data-link",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q010",
+      "type": "multiple_choice",
+      "prompt": "Which protocol allows you to securely upload files to another computer on the internet?",
+      "choices": [
+        {
+          "id": "q010-sftp",
+          "text": "SFTP"
+        },
+        {
+          "id": "q010-http",
+          "text": "HTTP"
+        },
+        {
+          "id": "q010-ntp",
+          "text": "NTP"
+        },
+        {
+          "id": "q010-icmp",
+          "text": "ICMP"
+        }
+      ],
+      "correctChoiceId": "q010-sftp",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q011",
+      "type": "multiple_choice",
+      "prompt": "Which command will display all the current operational settings configured on a Cisco router?",
+      "choices": [
+        {
+          "id": "q011-show-protocols",
+          "text": "show protocols"
+        },
+        {
+          "id": "q011-show-startup-config",
+          "text": "show startup-config"
+        },
+        {
+          "id": "q011-show-version",
+          "text": "show version"
+        },
+        {
+          "id": "q011-show-running-config",
+          "text": "show running-config"
+        }
+      ],
+      "correctChoiceId": "q011-show-running-config",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q012",
+      "type": "true_false",
+      "prompt": "High levels of network latency decrease network bandwidth.",
+      "correctAnswer": false,
+      "explanation": null
+    },
+    {
+      "id": "q013",
+      "type": "true_false",
+      "prompt": "Low bandwidth can increase network latency.",
+      "correctAnswer": true,
+      "explanation": null
+    },
+    {
+      "id": "q014",
+      "type": "multiple_choice",
+      "prompt": "Which protocol does an IPv6 host use to resolve the MAC address associated with a destination IPv6 address?",
+      "choices": [
+        {
+          "id": "q014-address-resolution-protocol-arp",
+          "text": "Address Resolution Protocol (ARP)"
+        },
+        {
+          "id": "q014-cisco-discovery-protocol-cdp",
+          "text": "Cisco Discovery Protocol (CDP)"
+        },
+        {
+          "id": "q014-neighbor-discovery-protocol-ndp",
+          "text": "Neighbor Discovery Protocol (NDP)"
+        },
+        {
+          "id": "q014-dynamic-host-configuration-protocol-dhcp",
+          "text": "Dynamic Host Configuration Protocol (DHCP)"
+        }
+      ],
+      "correctChoiceId": "q014-neighbor-discovery-protocol-ndp",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q015",
+      "type": "multiple_choice",
+      "prompt": "Which protocol is used by an IPv6-enabled host to perform automatic stateless address configuration?",
+      "choices": [
+        {
+          "id": "q015-dhcpv6",
+          "text": "DHCPv6"
+        },
+        {
+          "id": "q015-icmpv6",
+          "text": "ICMPv6"
+        },
+        {
+          "id": "q015-tftp",
+          "text": "TFTP"
+        },
+        {
+          "id": "q015-dns",
+          "text": "DNS"
+        }
+      ],
+      "correctChoiceId": "q015-icmpv6",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q016",
+      "type": "multiple_choice",
+      "prompt": "During the data encapsulation process, which OSI layer adds a header that contains MAC addressing information and a trailer used for error checking?",
+      "choices": [
+        {
+          "id": "q016-network",
+          "text": "Network"
+        },
+        {
+          "id": "q016-transport",
+          "text": "Transport"
+        },
+        {
+          "id": "q016-data-link",
+          "text": "Data Link"
+        },
+        {
+          "id": "q016-session",
+          "text": "Session"
+        }
+      ],
+      "correctChoiceId": "q016-data-link",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q017",
+      "type": "multiple_choice",
+      "prompt": "A user initiates a trouble ticket stating that an external web page is not loading. You determine that other resources, both internal and external, are still reachable. Which command can you use to help locate where the issue is in the network path to the external web page?",
+      "choices": [
+        {
+          "id": "q017-ping-t",
+          "text": "ping -t"
+        },
+        {
+          "id": "q017-tracert",
+          "text": "tracert"
+        },
+        {
+          "id": "q017-ipconfig-all",
+          "text": "ipconfig /all"
+        },
+        {
+          "id": "q017-nslookup",
+          "text": "nslookup"
+        }
+      ],
+      "correctChoiceId": "q017-tracert",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q018",
+      "type": "multiple_choice",
+      "prompt": "An engineer configured a new VLAN named VLAN2 for the Data Center team. When the team tries to ping addresses outside VLAN2 from a computer in VLAN2, they are unable to reach them. What should the engineer configure?",
+      "choices": [
+        {
+          "id": "q018-additional-vlan",
+          "text": "Additional VLAN"
+        },
+        {
+          "id": "q018-default-route",
+          "text": "Default route"
+        },
+        {
+          "id": "q018-default-gateway",
+          "text": "Default gateway"
+        },
+        {
+          "id": "q018-static-route",
+          "text": "Static route"
+        }
+      ],
+      "correctChoiceId": "q018-default-gateway",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q019",
+      "type": "multiple_choice",
+      "prompt": "Which information is included in the header of a UDP segment?",
+      "choices": [
+        {
+          "id": "q019-ip-addresses",
+          "text": "IP addresses"
+        },
+        {
+          "id": "q019-sequence-numbers",
+          "text": "Sequence numbers"
+        },
+        {
+          "id": "q019-port-numbers",
+          "text": "Port numbers"
+        },
+        {
+          "id": "q019-mac-addresses",
+          "text": "MAC addresses"
+        }
+      ],
+      "correctChoiceId": "q019-port-numbers",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q020",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of assigning an IP address to the management VLAN interface on a Layer 2 switch?",
+      "choices": [
+        {
+          "id": "q020-to-enable-access-to-the-cli-on-the-switch",
+          "text": "To enable access to the CLI on the switch through Telnet or SSH"
+        },
+        {
+          "id": "q020-to-enable-the-switch-to-provide-dhcp-servi",
+          "text": "To enable the switch to provide DHCP services to other switches in the network"
+        },
+        {
+          "id": "q020-to-enable-the-switch-to-act-as-a-default-g",
+          "text": "To enable the switch to act as a default gateway for the attached devices"
+        },
+        {
+          "id": "q020-to-enable-the-switch-to-resolve-urls-for-t",
+          "text": "To enable the switch to resolve URLs for the attached devices"
+        }
+      ],
+      "correctChoiceId": "q020-to-enable-access-to-the-cli-on-the-switch",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q021",
+      "type": "multiple_choice",
+      "prompt": "Which of the following is a characteristic of the Spanning Tree Protocol (STP)?",
+      "choices": [
+        {
+          "id": "q021-prevents-loops-in-a-network-by-blocking-re",
+          "text": "Prevents loops in a network by blocking redundant links"
+        },
+        {
+          "id": "q021-provides-load-balancing-across-multiple-pa",
+          "text": "Provides load balancing across multiple paths in a network"
+        },
+        {
+          "id": "q021-prioritizes-network-traffic-based-on-quali",
+          "text": "Prioritizes network traffic based on Quality of Service (QoS) settings"
+        },
+        {
+          "id": "q021-allows-for-rapid-convergence-by-eliminatin",
+          "text": "Allows for rapid convergence by eliminating the need for spanning tree calculations"
+        }
+      ],
+      "correctChoiceId": "q021-prevents-loops-in-a-network-by-blocking-re",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q022",
+      "type": "multiple_choice",
+      "prompt": "What information is contained in the MAC address table of a switch?",
+      "choices": [
+        {
+          "id": "q022-dynamically-learned-layer-2-and-layer-3-ad",
+          "text": "Dynamically learned Layer 2 and Layer 3 addresses of devices communicating on active ports on the switch"
+        },
+        {
+          "id": "q022-the-mac-addresses-of-devices-communicating",
+          "text": "The MAC addresses of devices communicating on active ports and static MAC addresses configured by the administrator"
+        },
+        {
+          "id": "q022-all-active-ports-on-the-switch-and-the-hos",
+          "text": "All active ports on the switch and the host Layer 3 addresses that were dynamically learned on each port"
+        },
+        {
+          "id": "q022-mac-address-to-ip-address-mappings-learned",
+          "text": "MAC-address-to-IP-address mappings learned through ARP requests or manually configured by the administrator"
+        }
+      ],
+      "correctChoiceId": "q022-the-mac-addresses-of-devices-communicating",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q023",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of a subnet mask?",
+      "choices": [
+        {
+          "id": "q023-determine-the-network-portion-of-an-ip-add",
+          "text": "Determine the network portion of an IP address"
+        },
+        {
+          "id": "q023-determine-the-host-portion-of-an-ip-addres",
+          "text": "Determine the host portion of an IP address"
+        },
+        {
+          "id": "q023-determine-the-default-gateway-for-a-networ",
+          "text": "Determine the default gateway for a network"
+        },
+        {
+          "id": "q023-determine-the-dns-server-for-a-network",
+          "text": "Determine the DNS server for a network"
+        }
+      ],
+      "correctChoiceId": "q023-determine-the-network-portion-of-an-ip-add",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q024",
+      "type": "multiple_choice",
+      "prompt": "A user at your company cannot connect to a website on the internet. However, they can connect to network resources on the company LAN. You want to use the divide-and-conquer approach to troubleshoot the issue. What should you do first?",
+      "choices": [
+        {
+          "id": "q024-run-the-telnet-command-from-the-user-s-com",
+          "text": "Run the Telnet command from the user's computer"
+        },
+        {
+          "id": "q024-ping-the-default-gateway-from-the-user-s-c",
+          "text": "Ping the default gateway from the user's computer"
+        },
+        {
+          "id": "q024-check-the-computer-s-cable-connections",
+          "text": "Check the computer's cable connections"
+        },
+        {
+          "id": "q024-check-the-computer-s-network-adapter",
+          "text": "Check the computer's network adapter"
+        }
+      ],
+      "correctChoiceId": "q024-ping-the-default-gateway-from-the-user-s-c",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q025",
+      "type": "multiple_choice",
+      "prompt": "Which device protects the network by permitting or denying traffic based on IP address, port number, or application?",
+      "choices": [
+        {
+          "id": "q025-firewall",
+          "text": "Firewall"
+        },
+        {
+          "id": "q025-access-point",
+          "text": "Access point"
+        },
+        {
+          "id": "q025-vpn-gateway",
+          "text": "VPN gateway"
+        },
+        {
+          "id": "q025-intrusion-detection-system",
+          "text": "Intrusion detection system"
+        }
+      ],
+      "correctChoiceId": "q025-firewall",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q026",
+      "type": "multiple_choice",
+      "prompt": "How does a firewall determine which traffic to block?",
+      "choices": [
+        {
+          "id": "q026-the-firewall-matches-traffic-based-on-the",
+          "text": "The firewall matches traffic based on the IP address in the ARP table"
+        },
+        {
+          "id": "q026-the-firewall-performs-a-one-to-many-networ",
+          "text": "The firewall performs a one-to-many network address translation"
+        },
+        {
+          "id": "q026-the-firewall-matches-the-traffic-based-on",
+          "text": "The firewall matches the traffic based on source and destination IP address"
+        },
+        {
+          "id": "q026-the-firewall-performs-a-one-to-one-network",
+          "text": "The firewall performs a one-to-one network address translation"
+        }
+      ],
+      "correctChoiceId": "q026-the-firewall-matches-the-traffic-based-on",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q027",
+      "type": "true_false",
+      "prompt": "A firewall can block traffic to specific ports on internal computers.",
+      "correctAnswer": true,
+      "explanation": null
+    },
+    {
+      "id": "q028",
+      "type": "true_false",
+      "prompt": "A firewall can direct all web traffic to a specific IP address.",
+      "correctAnswer": true,
+      "explanation": null
+    },
+    {
+      "id": "q029",
+      "type": "true_false",
+      "prompt": "A firewall can prevent specific apps from running on a computer.",
+      "correctAnswer": false,
+      "explanation": null
+    },
+    {
+      "id": "q030",
+      "type": "multiple_choice",
+      "prompt": "Which best describes confidentiality with regard to network security?",
+      "choices": [
+        {
+          "id": "q030-ensures-data-is-available-for-access-by-pr",
+          "text": "Ensures data is available for access by providing redundant systems"
+        },
+        {
+          "id": "q030-ensures-data-is-not-changed-during-transit",
+          "text": "Ensures data is not changed during transit between systems"
+        },
+        {
+          "id": "q030-ensures-data-is-kept-secret-using-safeguar",
+          "text": "Ensures data is kept secret using safeguards to prevent unauthorized access"
+        },
+        {
+          "id": "q030-ensures-data-is-trusted-and-has-not-been-t",
+          "text": "Ensures data is trusted and has not been tampered with or changed"
+        }
+      ],
+      "correctChoiceId": "q030-ensures-data-is-kept-secret-using-safeguar",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q031",
+      "type": "multiple_choice",
+      "prompt": "Which component of the AAA service security model provides identity verification?",
+      "choices": [
+        {
+          "id": "q031-authentication",
+          "text": "Authentication"
+        },
+        {
+          "id": "q031-accounting",
+          "text": "Accounting"
+        },
+        {
+          "id": "q031-auditing",
+          "text": "Auditing"
+        },
+        {
+          "id": "q031-authorization",
+          "text": "Authorization"
+        }
+      ],
+      "correctChoiceId": "q031-authentication",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q032",
+      "type": "multiple_choice",
+      "prompt": "When setting up a wireless network, which security benefit is provided by enabling WPA3?",
+      "choices": [
+        {
+          "id": "q032-limits-network-access-to-only-specified-de",
+          "text": "Limits network access to only specified devices"
+        },
+        {
+          "id": "q032-sends-traffic-through-an-encrypted-tunnel",
+          "text": "Sends traffic through an encrypted tunnel"
+        },
+        {
+          "id": "q032-secures-authentication-between-client-and",
+          "text": "Secures authentication between client and access point"
+        },
+        {
+          "id": "q032-makes-it-more-difficult-to-discover-the-wi",
+          "text": "Makes it more difficult to discover the wireless network"
+        }
+      ],
+      "correctChoiceId": "q032-secures-authentication-between-client-and",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q033",
+      "type": "multiple_choice",
+      "prompt": "Which component of the AAA service security model provides identity verification?",
+      "choices": [
+        {
+          "id": "q033-authorization",
+          "text": "Authorization"
+        },
+        {
+          "id": "q033-auditing",
+          "text": "Auditing"
+        },
+        {
+          "id": "q033-authentication",
+          "text": "Authentication"
+        },
+        {
+          "id": "q033-accounting",
+          "text": "Accounting"
+        }
+      ],
+      "correctChoiceId": "q033-authentication",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q034",
+      "type": "multiple_choice",
+      "prompt": "Which wireless security option uses a pre-shared key to authenticate clients?",
+      "choices": [
+        {
+          "id": "q034-wpa2-personal",
+          "text": "WPA2-Personal"
+        },
+        {
+          "id": "q034-802-1x",
+          "text": "802.1X"
+        },
+        {
+          "id": "q034-802-1q",
+          "text": "802.1Q"
+        },
+        {
+          "id": "q034-wpa2-enterprise",
+          "text": "WPA2-Enterprise"
+        }
+      ],
+      "correctChoiceId": "q034-wpa2-personal",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q035",
+      "type": "multiple_choice",
+      "prompt": "You need to connect a computer's network adapter to a switch using a 1000BASE-T cable. Which connector should you use?",
+      "choices": [
+        {
+          "id": "q035-coax",
+          "text": "Coax"
+        },
+        {
+          "id": "q035-rj-11",
+          "text": "RJ-11"
+        },
+        {
+          "id": "q035-os2-lc",
+          "text": "OS2 LC"
+        },
+        {
+          "id": "q035-rj-45",
+          "text": "RJ-45"
+        }
+      ],
+      "correctChoiceId": "q035-rj-45",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q036",
+      "type": "multiple_choice",
+      "prompt": "Which type of connector should you use to terminate unshielded twisted pair (UTP) cable?",
+      "choices": [
+        {
+          "id": "q036-st-straight-tip",
+          "text": "ST (Straight Tip)"
+        },
+        {
+          "id": "q036-sc-subscriber-connector",
+          "text": "SC (Subscriber Connector)"
+        },
+        {
+          "id": "q036-rj-45-registered-jack-45",
+          "text": "RJ-45 (Registered Jack 45)"
+        },
+        {
+          "id": "q036-os2-lc",
+          "text": "OS2 LC"
+        }
+      ],
+      "correctChoiceId": "q036-rj-45-registered-jack-45",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q037",
+      "type": "multiple_choice",
+      "prompt": "You want to store files that will be accessible by every user on your network. Which endpoint device do you need?",
+      "choices": [
+        {
+          "id": "q037-access-point",
+          "text": "Access point"
+        },
+        {
+          "id": "q037-server",
+          "text": "Server"
+        },
+        {
+          "id": "q037-hub",
+          "text": "Hub"
+        },
+        {
+          "id": "q037-switch",
+          "text": "Switch"
+        }
+      ],
+      "correctChoiceId": "q037-server",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q038",
+      "type": "multiple_choice",
+      "prompt": "What type of interface is the administrator installing in the router?",
+      "choices": [
+        {
+          "id": "q038-usb-universal-serial-bus",
+          "text": "USB (Universal Serial Bus)"
+        },
+        {
+          "id": "q038-sfp-small-form-factor-pluggable",
+          "text": "SFP (Small Form-factor Pluggable)"
+        },
+        {
+          "id": "q038-serial",
+          "text": "Serial"
+        },
+        {
+          "id": "q038-poe-power-over-ethernet",
+          "text": "PoE (Power over Ethernet)"
+        }
+      ],
+      "correctChoiceId": "q038-sfp-small-form-factor-pluggable",
+      "shuffleChoices": true,
+      "explanation": null,
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/q038-sfp-interface.jpg",
+          "alt": "Close-up of an administrator inserting a rectangular networking module into a router",
+          "caption": null
+        }
+      ]
+    },
+    {
+      "id": "q039",
+      "type": "multiple_choice",
+      "prompt": "Which standard contains the specifications for Wi-Fi networks?",
+      "choices": [
+        {
+          "id": "q039-gsm",
+          "text": "GSM"
+        },
+        {
+          "id": "q039-lte",
+          "text": "LTE"
+        },
+        {
+          "id": "q039-ieee-802-11",
+          "text": "IEEE 802.11"
+        },
+        {
+          "id": "q039-ieee-802-3",
+          "text": "IEEE 802.3"
+        },
+        {
+          "id": "q039-eia-tia-568a",
+          "text": "EIA/TIA 568A"
+        }
+      ],
+      "correctChoiceId": "q039-ieee-802-11",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q040",
+      "type": "multiple_choice",
+      "prompt": "Which device is an Internet of Things (IoT) device?",
+      "choices": [
+        {
+          "id": "q040-an-internet-accessible-thermostat",
+          "text": "An internet-accessible thermostat"
+        },
+        {
+          "id": "q040-a-video-streaming-server",
+          "text": "A video streaming server"
+        },
+        {
+          "id": "q040-a-virtual-private-network-concentrator",
+          "text": "A virtual private network concentrator"
+        },
+        {
+          "id": "q040-a-cloud-based-file-storage-array",
+          "text": "A cloud-based file storage array"
+        }
+      ],
+      "correctChoiceId": "q040-an-internet-accessible-thermostat",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q041",
+      "type": "multiple_choice",
+      "prompt": "Which network technology is not impacted by electromagnetic and radio-wave interference?",
+      "choices": [
+        {
+          "id": "q041-wireless",
+          "text": "Wireless"
+        },
+        {
+          "id": "q041-twisted-pair",
+          "text": "Twisted Pair"
+        },
+        {
+          "id": "q041-fiber",
+          "text": "Fiber"
+        },
+        {
+          "id": "q041-copper",
+          "text": "Copper"
+        }
+      ],
+      "correctChoiceId": "q041-fiber",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q042",
+      "type": "multiple_choice",
+      "prompt": "A Cisco switch is not accessible from the network. You need to view its running configuration. Which out-of-band method can you use to access it?",
+      "choices": [
+        {
+          "id": "q042-ssh",
+          "text": "SSH"
+        },
+        {
+          "id": "q042-snmp",
+          "text": "SNMP"
+        },
+        {
+          "id": "q042-console",
+          "text": "Console"
+        },
+        {
+          "id": "q042-telnet",
+          "text": "Telnet"
+        }
+      ],
+      "correctChoiceId": "q042-console",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q043",
+      "type": "multiple_choice",
+      "prompt": "A help desk technician receives the four trouble tickets listed below. Which ticket should receive the highest priority and be addressed first?",
+      "choices": [
+        {
+          "id": "q043-ticket-1-a-user-requests-relocation-of-a-p",
+          "text": "Ticket 1: A user requests relocation of a printer to a different network jack in the same office. The jack must be patched and made active."
+        },
+        {
+          "id": "q043-ticket-2-an-online-webinar-is-taking-place",
+          "text": "Ticket 2: An online webinar is taking place in the conference room. The video conferencing equipment lost internet access."
+        },
+        {
+          "id": "q043-ticket-3-a-user-reports-that-response-time",
+          "text": "Ticket 3: A user reports that response time for a cloud-based application is slower than usual."
+        },
+        {
+          "id": "q043-ticket-4-two-users-report-that-wireless-ac",
+          "text": "Ticket 4: Two users report that wireless access in the cafeteria has been down for the last hour."
+        }
+      ],
+      "correctChoiceId": "q043-ticket-2-an-online-webinar-is-taking-place",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q044",
+      "type": "multiple_choice",
+      "prompt": "An engineer configured a new VLAN named VLAN2 for the Data Center team. When the team tries to ping addresses outside VLAN2 from a computer in VLAN2, they are unable to reach them. What should the engineer configure?",
+      "choices": [
+        {
+          "id": "q044-additional-vlan",
+          "text": "Additional VLAN"
+        },
+        {
+          "id": "q044-default-route",
+          "text": "Default route"
+        },
+        {
+          "id": "q044-default-gateway",
+          "text": "Default gateway"
+        },
+        {
+          "id": "q044-static-route",
+          "text": "Static route"
+        }
+      ],
+      "correctChoiceId": "q044-default-gateway",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q045",
+      "type": "multiple_choice",
+      "prompt": "You are diagnosing intermittent connectivity on a floor that uses iOS devices. You suspect that SSID settings and network configuration do not align with corporate security protocols. Which approach should you take to verify and rectify the network settings directly on the affected devices?",
+      "choices": [
+        {
+          "id": "q045-network-reset",
+          "text": "Network Reset"
+        },
+        {
+          "id": "q045-manual-configuration",
+          "text": "Manual Configuration"
+        },
+        {
+          "id": "q045-use-fing",
+          "text": "Use Fing"
+        },
+        {
+          "id": "q045-ssid-reconfiguration",
+          "text": "SSID Reconfiguration"
+        }
+      ],
+      "correctChoiceId": "q045-manual-configuration",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q046",
+      "type": "multiple_choice",
+      "prompt": "In the shown network, Switch1 is a Layer 2 switch. PC-A sends a frame to PC-C, and Switch1 has no mapping entry for PC-C's MAC address. Which action does Switch1 take?",
+      "choices": [
+        {
+          "id": "q046-switch1-queries-switch2-for-the-mac-addres",
+          "text": "Switch1 queries Switch2 for the MAC address of PC-C"
+        },
+        {
+          "id": "q046-switch1-drops-the-frame-and-sends-an-error",
+          "text": "Switch1 drops the frame and sends an error message back to PC-A"
+        },
+        {
+          "id": "q046-switch1-sends-an-arp-request-to-obtain-the",
+          "text": "Switch1 sends an ARP request to obtain the MAC address of PC-C"
+        },
+        {
+          "id": "q046-switch1-floods-the-frame-out-all-active-po",
+          "text": "Switch1 floods the frame out all active ports except port Gi0/1"
+        }
+      ],
+      "correctChoiceId": "q046-switch1-floods-the-frame-out-all-active-po",
+      "shuffleChoices": true,
+      "explanation": null,
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/q046-switch1-topology.jpg",
+          "alt": "Network diagram with Router1 connected to Switch1 and Switch2, and four PCs connected through labeled switch ports",
+          "caption": null
+        }
+      ]
+    },
+    {
+      "id": "q047",
+      "type": "multiple_choice",
+      "prompt": "A laptop is connected to port A on the first switch, and a second switch is connected to port D. The laptop sends a broadcast frame to the first switch. Through which ports is the broadcast frame forwarded?",
+      "choices": [
+        {
+          "id": "q047-d-only",
+          "text": "D only"
+        },
+        {
+          "id": "q047-a-b-and-d-only",
+          "text": "A, B and D only"
+        },
+        {
+          "id": "q047-b-and-c-only",
+          "text": "B and C only"
+        },
+        {
+          "id": "q047-b-c-and-d-only",
+          "text": "B, C and D only"
+        }
+      ],
+      "correctChoiceId": "q047-b-c-and-d-only",
+      "shuffleChoices": true,
+      "explanation": null,
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/q047-switch-ports-diagram.jpg",
+          "alt": "Two connected switches with a laptop on port A of the first switch and ports A through D labeled",
+          "caption": null
+        }
+      ]
+    },
+    {
+      "id": "q048",
+      "type": "multiple_choice",
+      "prompt": "A support technician examines the front panel of a Cisco switch and sees four Ethernet cables connected in the first four ports. Ports 1, 2, and 3 have a green LED. Port 4 has a blinking green light. What is the state of Port 4?",
+      "choices": [
+        {
+          "id": "q048-link-is-up-and-not-stable",
+          "text": "Link is up and not stable"
+        },
+        {
+          "id": "q048-link-is-up-and-there-is-no-activity",
+          "text": "Link is up and there is no activity"
+        },
+        {
+          "id": "q048-link-is-up-with-cable-malfunctions",
+          "text": "Link is up with cable malfunctions"
+        },
+        {
+          "id": "q048-link-is-up-and-active",
+          "text": "Link is up and active"
+        }
+      ],
+      "correctChoiceId": "q048-link-is-up-and-active",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q049",
+      "type": "multiple_choice",
+      "prompt": "A user reports a problem connecting to network resources. Other users connected to the same switch are not experiencing the same problem. The user's computer is patched to switch port Gi0/15. The status indicator for this port is blinking alternately green then amber. What does the light pattern indicate about the status of port Gi0/15?",
+      "choices": [
+        {
+          "id": "q049-the-port-is-administratively-shut-down",
+          "text": "The port is administratively shut down"
+        },
+        {
+          "id": "q049-the-port-is-experiencing-a-high-rate-of-er",
+          "text": "The port is experiencing a high rate of errors"
+        },
+        {
+          "id": "q049-the-port-is-blocked-by-a-firewall-rule",
+          "text": "The port is blocked by a firewall rule"
+        },
+        {
+          "id": "q049-the-port-is-not-connected-to-a-powered-on",
+          "text": "The port is not connected to a powered-on device"
+        }
+      ],
+      "correctChoiceId": "q049-the-port-is-experiencing-a-high-rate-of-er",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q050",
+      "type": "multiple_choice",
+      "prompt": "A user reports that a company website is unavailable. A help desk technician issues a tracert command to determine whether the server hosting the website is reachable. What can you tell from the command output?",
+      "choices": [
+        {
+          "id": "q050-the-server-with-address-192-168-1-10-is-re",
+          "text": "The server with address 192.168.1.10 is reachable over the network"
+        },
+        {
+          "id": "q050-the-router-at-hop-3-is-not-forwarding-pack",
+          "text": "The router at hop 3 is not forwarding packets to 192.168.1.10"
+        },
+        {
+          "id": "q050-requests-to-the-web-server-at-192-168-1-10",
+          "text": "Requests to the web server at 192.168.1.10 are being delayed and time out"
+        },
+        {
+          "id": "q050-the-server-address-192-168-1-10-is-being-b",
+          "text": "The server address 192.168.1.10 is being blocked by a firewall on the router at hop 3"
+        }
+      ],
+      "correctChoiceId": "q050-the-server-with-address-192-168-1-10-is-re",
+      "shuffleChoices": true,
+      "explanation": null,
+      "code": {
+        "language": "Windows Command Prompt",
+        "content": "C:\\>tracert 192.168.1.10\nTracing route to 192.168.1.10 over a maximum of 30 hops:\n1  0 ms  0 ms  1 ms  192.168.5.1\n2  1 ms  0 ms  0 ms  10.0.1.1\n3  *     *     *     Request timed out.\n4  1 ms  1 ms  0 ms  10.0.0.2\n5  1 ms  1 ms  0 ms  192.168.1.10"
+      }
+    },
+    {
+      "id": "q051",
+      "type": "multiple_choice",
+      "prompt": "Which action can be run directly from the Cisco router's IOS mode shown?",
+      "choices": [
+        {
+          "id": "q051-enable-a-routing-process",
+          "text": "Enable a routing process"
+        },
+        {
+          "id": "q051-show-running-system-information",
+          "text": "Show running system information"
+        },
+        {
+          "id": "q051-enter-interface-ip-configuration-subcomman",
+          "text": "Enter interface IP configuration subcommands"
+        },
+        {
+          "id": "q051-select-an-interface-to-configure",
+          "text": "Select an interface to configure"
+        }
+      ],
+      "correctChoiceId": "q051-show-running-system-information",
+      "shuffleChoices": true,
+      "explanation": null,
+      "code": {
+        "language": "Cisco IOS",
+        "content": "router1#"
+      }
+    },
+    {
+      "id": "q052",
+      "type": "multiple_choice",
+      "prompt": "What can you determine about this Cisco 24-port Ethernet switch from the show mac-address-table command output?",
+      "choices": [
+        {
+          "id": "q052-there-are-eleven-active-ports-on-this-swit",
+          "text": "There are eleven active ports on this switch"
+        },
+        {
+          "id": "q052-port-fa0-5-is-set-to-administratively-down",
+          "text": "Port Fa0/5 is set to administratively down"
+        },
+        {
+          "id": "q052-all-entries-were-learned-by-examining-inco",
+          "text": "All entries were learned by examining incoming frames"
+        },
+        {
+          "id": "q052-port-gi0-1-connects-to-another-switch",
+          "text": "Port Gi0/1 connects to another switch"
+        }
+      ],
+      "correctChoiceId": "q052-port-gi0-1-connects-to-another-switch",
+      "shuffleChoices": true,
+      "explanation": null,
+      "code": {
+        "language": "Cisco IOS",
+        "content": "Switch>show mac-address-table\nMac Address Table\n-------------------------------------------\nVlan    Mac Address       Type        Ports\n----    -----------       --------    -----\n   1    0001.6537.3614    DYNAMIC     Fa0/4\n   1    0030.a363.8719    DYNAMIC     Gi0/1\n   2    0021.4244.7dd5    DYNAMIC     Gi0/1\n   2    0030.a363.8719    DYNAMIC     Gi0/1\n   2    00d0.ff78.00d5    DYNAMIC     Gi0/1\n   2    00e0.b08a.2dcb    DYNAMIC     Gi0/1\n   3    0050.3363.8719    DYNAMIC     Gi0/1\n   3    0060.5c25.49ad    DYNAMIC     Fa0/3\n   3    00e0.b08a.2dcb    DYNAMIC     Gi0/1\n   3    0060.7f48.c81a    DYNAMIC     Fa0/2\n   3    ec2e.9879.d11b    STATIC      Fa0/5"
+      }
+    },
+    {
+      "id": "q053",
+      "type": "true_false",
+      "prompt": "A device connected to GigabitEthernet0/1 can send out broadcast traffic.",
+      "correctAnswer": false,
+      "explanation": null,
+      "code": {
+        "language": "Cisco IOS",
+        "content": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet0/0     192.168.1.10    YES manual up                    up\nGigabitEthernet0/1     unassigned      YES manual down                  down\nGigabitEthernet0/2     unassigned      YES unset  administratively down down"
+      }
+    },
+    {
+      "id": "q054",
+      "type": "true_false",
+      "prompt": "A technician issued the shutdown command on interface GigabitEthernet0/2.",
+      "correctAnswer": true,
+      "explanation": null,
+      "code": {
+        "language": "Cisco IOS",
+        "content": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet0/0     192.168.1.10    YES manual up                    up\nGigabitEthernet0/1     unassigned      YES manual down                  down\nGigabitEthernet0/2     unassigned      YES unset  administratively down down"
+      }
+    },
+    {
+      "id": "q055",
+      "type": "true_false",
+      "prompt": "A technician set the IP address for GigabitEthernet0/0 by using the CLI.",
+      "correctAnswer": true,
+      "explanation": null,
+      "code": {
+        "language": "Cisco IOS",
+        "content": "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet0/0     192.168.1.10    YES manual up                    up\nGigabitEthernet0/1     unassigned      YES manual down                  down\nGigabitEthernet0/2     unassigned      YES unset  administratively down down"
+      }
+    },
+    {
+      "id": "q056",
+      "type": "multiple_choice",
+      "prompt": "You purchase a new Cisco switch, turn it on, connect to its console port, and run the shown command. Which statement is true?",
+      "choices": [
+        {
+          "id": "q056-the-two-interfaces-can-communicate-over-la",
+          "text": "The two interfaces can communicate over Layer 2"
+        },
+        {
+          "id": "q056-the-two-interfaces-are-administratively-sh",
+          "text": "The two interfaces are administratively shut down"
+        },
+        {
+          "id": "q056-the-two-interfaces-have-default-ip-address",
+          "text": "The two interfaces have default IP addresses assigned"
+        }
+      ],
+      "correctChoiceId": "q056-the-two-interfaces-can-communicate-over-la",
+      "shuffleChoices": true,
+      "explanation": null,
+      "code": {
+        "language": "Cisco IOS",
+        "content": "#show running-config | section include interface\ninterface GigabitEthernet0/1\n!\ninterface GigabitEthernet0/2\n!\n<output omitted>"
+      }
+    },
+    {
+      "id": "q057",
+      "type": "identification",
+      "prompt": "A computer cannot resolve URLs in the browser. Based on the ipconfig /all output, which command should you issue to view the network devices in the path from the computer to the server that resolves the host name?",
+      "acceptedAnswers": [
+        "tracert 64.100.8.8"
+      ],
+      "displayAnswer": "tracert 64.100.8.8",
+      "caseSensitive": false,
+      "explanation": null,
+      "code": {
+        "language": "Windows Command Prompt",
+        "content": "Connection-specific DNS Suffix..: local.co\nPhysical Address................: 0004.9A64.227D\nIPv4 Address....................: 192.168.0.10\nSubnet Mask.....................: 255.255.255.0\nDefault Gateway.................: 192.168.0.1\nDHCP Servers....................: 192.168.10.1\nDNS Servers.....................: 64.100.8.8"
+      }
+    },
+    {
+      "id": "q058",
+      "type": "identification",
+      "prompt": "Computers in a small office cannot access companypro.net. Based on the ipconfig output, which command should you use to determine whether the router is reachable?",
+      "acceptedAnswers": [
+        "ping 192.168.0.1"
+      ],
+      "displayAnswer": "ping 192.168.0.1",
+      "caseSensitive": false,
+      "explanation": null,
+      "code": {
+        "language": "Windows Command Prompt",
+        "content": "DHCP Enabled....................: Yes\nAutoconfiguration Enabled.......: Yes\nIPv4 Address....................: 192.168.0.14(Preferred)\nSubnet Mask.....................: 255.255.255.0\nLease Obtained..................: Sunday, January 8, 2023 11:00:02 AM\nLease Expires...................: Sunday, January 8, 2023 12:00:12 PM\nDefault Gateway.................: 192.168.0.1\nDHCP Server.....................: 192.168.0.1\nDNS Servers.....................: 8.8.8.8\n                                  8.8.4.4\nNetBIOS over Tcpip..............: Enabled"
+      }
+    },
+    {
+      "id": "q059",
+      "type": "identification",
+      "prompt": "You want to list the IPv4 addresses associated with the host name www.companypro.net. What command should you execute?",
+      "acceptedAnswers": [
+        "nslookup www.companypro.net"
+      ],
+      "displayAnswer": "nslookup www.companypro.net",
+      "caseSensitive": false,
+      "explanation": null
+    },
+    {
+      "id": "q060",
+      "type": "multiple_choice",
+      "prompt": "A support technician examines the front panel of a Cisco switch and sees four Ethernet cables connected in the first four ports. Ports 1, 2, and 3 have a green LED. Port 4 has a blinking green light. What is the state of Port 4?",
+      "choices": [
+        {
+          "id": "q060-link-is-up-with-cable-malfunctions",
+          "text": "Link is up with cable malfunctions"
+        },
+        {
+          "id": "q060-link-is-up-and-not-stable",
+          "text": "Link is up and not stable"
+        },
+        {
+          "id": "q060-link-is-up-and-active",
+          "text": "Link is up and active"
+        },
+        {
+          "id": "q060-link-is-up-and-there-is-no-activity",
+          "text": "Link is up and there is no activity"
+        }
+      ],
+      "correctChoiceId": "q060-link-is-up-and-active",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q061",
+      "type": "multiple_choice",
+      "prompt": "What is the purpose of assigning an IP address to the management VLAN interface on a Layer 2 switch?",
+      "choices": [
+        {
+          "id": "q061-to-enable-the-switch-to-act-as-a-default-g",
+          "text": "To enable the switch to act as a default gateway for the attached devices"
+        },
+        {
+          "id": "q061-to-enable-the-switch-to-resolve-urls-for-t",
+          "text": "To enable the switch to resolve URLs for the attached devices"
+        },
+        {
+          "id": "q061-to-enable-the-switch-to-provide-dhcp-servi",
+          "text": "To enable the switch to provide DHCP services to other switches in the network"
+        },
+        {
+          "id": "q061-to-enable-access-to-the-cli-on-the-switch",
+          "text": "To enable access to the CLI on the switch through Telnet or SSH"
+        }
+      ],
+      "correctChoiceId": "q061-to-enable-access-to-the-cli-on-the-switch",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q062",
+      "type": "identification",
+      "prompt": "What command will display the following output?",
+      "acceptedAnswers": [
+        "show cdp neighbors"
+      ],
+      "displayAnswer": "show cdp neighbors",
+      "caseSensitive": false,
+      "explanation": null,
+      "code": {
+        "language": "Cisco IOS",
+        "content": "Image is command output that states the following-\n\nCapability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge, S - Switch, H - Host, I - IGMP,\n\nDevice ID       Local Intrfce    Holdtme    Capability  Platform    Port ID\nesxi            Gig 0/5         177        S           VMware ES   vmnic0\nesxi            Gig 0/7         177        S           VMware ES   vmnic1\nesxi            Gig 0/6         177        S           VMware ES   vmnic2\n981888fc23a7    Gig 0/47        160        R S         Meraki MR   Port 0\n3456fecd1d08    Gig 0/1         178        S           MS120-8LP   Port 9\""
+      }
+    },
+    {
+      "id": "q063",
+      "type": "multiple_choice",
+      "prompt": "A network administrator can successfully ping www.cisco.com but cannot ping a corporate server at a remote branch in another city. You need to identify the specific router where packets are being dropped in the path to the remote branch. Which utility should you use?",
+      "choices": [
+        {
+          "id": "q063-traceroute",
+          "text": "Traceroute"
+        },
+        {
+          "id": "q063-netstat",
+          "text": "Netstat"
+        },
+        {
+          "id": "q063-telnet",
+          "text": "telnet"
+        },
+        {
+          "id": "q063-ipconfig",
+          "text": "ipconfig"
+        }
+      ],
+      "correctChoiceId": "q063-traceroute",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q064",
+      "type": "multiple_choice",
+      "prompt": "In a network with multiple VLANs, a user is unable to communicate with other users in the same VLAN but can communicate with users in different VLANs. Which of the following could be the cause?",
+      "choices": [
+        {
+          "id": "q064-the-user-s-switchport-is-not-configured-as",
+          "text": "The user's switchport is not configured as an access port"
+        },
+        {
+          "id": "q064-the-user-s-switchport-is-not-assigned-to-t",
+          "text": "The user's switchport is not assigned to the correct VLAN"
+        },
+        {
+          "id": "q064-the-user-s-switchport-is-configured-with-t",
+          "text": "The user's switchport is configured with the wrong duplex setting"
+        },
+        {
+          "id": "q064-the-user-s-switchport-is-experiencing-a-sp",
+          "text": "The user's switchport is experiencing a spanning tree loop"
+        }
+      ],
+      "correctChoiceId": "q064-the-user-s-switchport-is-not-assigned-to-t",
+      "shuffleChoices": true,
+      "explanation": null
+    },
+    {
+      "id": "q065",
+      "type": "multiple_choice",
+      "prompt": "A user initiates a trouble ticket stating that an external web page is not loading. You determine that other resources, both internal and external, are still reachable. Which command can you use to help locate where the issue is in the network path to the external web page?",
+      "choices": [
+        {
+          "id": "q065-ping-t",
+          "text": "ping -t"
+        },
+        {
+          "id": "q065-tracert",
+          "text": "tracert"
+        },
+        {
+          "id": "q065-ipconfig-all",
+          "text": "ipconfig /all"
+        },
+        {
+          "id": "q065-nslookup",
+          "text": "nslookup"
+        }
+      ],
+      "correctChoiceId": "q065-tracert",
+      "shuffleChoices": true,
+      "explanation": null
+    }
+  ]
+}

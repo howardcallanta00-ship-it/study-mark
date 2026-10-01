@@ -16,6 +16,9 @@ final class ApplicationRoutesTest extends CIUnitTestCase
 
         $result->assertOK();
         $result->assertSee('Study Mark');
+        $result->assertSee('/assets/css/study-mark.css?v=', false);
+        $result->assertSee('/assets/js/study-mark.js?v=', false);
+        $result->assertHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
         $result->assertHeader('X-Content-Type-Options', 'nosniff');
     }
 

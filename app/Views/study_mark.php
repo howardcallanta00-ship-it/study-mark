@@ -8,8 +8,8 @@
     <title>Study Mark</title>
     <meta name="description" content="Review lessons through flexible quizzes and focused mistake practice.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/assets/css/study-mark.css">
-    <script defer src="/assets/js/study-mark.js"></script>
+    <link rel="stylesheet" href="/assets/css/study-mark.css?v=<?= esc($styleVersion, 'attr') ?>">
+    <script defer src="/assets/js/study-mark.js?v=<?= esc($scriptVersion, 'attr') ?>"></script>
 </head>
 <body>
     <main id="study-mark-app" class="app-root" aria-label="Study Mark quiz application">

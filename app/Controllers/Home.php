@@ -14,9 +14,22 @@ class Home extends BaseController
         $this->quizzes = service('quizRepository');
     }
 
-    public function index(): string
+    public function index(): ResponseInterface
     {
-        return view('study_mark');
+        return $this->response
+            ->setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+            ->setHeader('Pragma', 'no-cache')
+            ->setBody(view('study_mark', [
+                'styleVersion' => $this->assetVersion('assets/css/study-mark.css'),
+                'scriptVersion' => $this->assetVersion('assets/js/study-mark.js'),
+            ]));
+    }
+
+    private function assetVersion(string $relativePath): string
+    {
+        $digest = hash_file('sha256', FCPATH . $relativePath);
+
+        return $digest === false ? '1' : substr($digest, 0, 12);
     }
 
     public function quizzes(): ResponseInterface

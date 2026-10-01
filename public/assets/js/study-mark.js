@@ -7,7 +7,7 @@
         accessibility: '◉', arrowLeft: '←', arrowRight: '→', book: '▤', braces: '{}',
         check: '✓', close: '×', code: '</>', copy: '▧', dark: '◐', flag: '⚑',
         keyboard: '⌨', library: '≡', light: '☀', monitor: '▣', network: '⑂',
-        repeat: '↻', reset: '↻', search: '⌕', target: '◎', warning: '!',
+        collapse: '⌃', expand: '⌄', repeat: '↻', reset: '↻', search: '⌕', target: '◎', warning: '!',
     };
 
     const freshState = () => ({
@@ -98,9 +98,23 @@
         return response.json();
     }
 
+    function preloadQuizMedia(quiz) {
+        const sources = new Set();
+        quiz.questions.forEach(question => {
+            [...(question.media || []), ...(question.choices || []).flatMap(choice => choice.media || [])]
+                .forEach(item => sources.add(`${quiz.assetBase}${item.src}`));
+        });
+        sources.forEach(source => {
+            const image = new Image();
+            image.decoding = 'async';
+            image.src = source;
+        });
+    }
+
     async function loadQuiz(id) {
         if (currentQuizData && currentQuizData.id === id) return currentQuizData;
         currentQuizData = await requestJson(`/api/quizzes/${encodeURIComponent(id)}`);
+        preloadQuizMedia(currentQuizData);
         return currentQuizData;
     }
 
@@ -256,7 +270,7 @@
         });
         return {
             quizVersion: quiz.version,
-            stage: 'questions', phase, sequence, choiceOrders, current: 0, answers: {},
+            stage: 'questions', phase, sequence, choiceOrders, current: 0, answers: {}, navigatorExpanded: false,
             setup: { ...setup }, result: previousResult,
         };
     }
@@ -302,14 +316,14 @@
         if (!Array.isArray(media) || media.length === 0) return '';
         return `<div class="media-list ${className}">${media.map(item => {
             const source = `${quiz.assetBase}${item.src}`;
-            return `<figure class="question-media"><img src="${escapeAttribute(source)}" alt="${escapeAttribute(item.alt)}" loading="lazy" data-media-image>${item.caption ? `<figcaption>${escapeHtml(item.caption)}</figcaption>` : ''}</figure>`;
+            return `<figure class="question-media"><img src="${escapeAttribute(source)}" alt="${escapeAttribute(item.alt)}" loading="eager" decoding="async" draggable="false" data-media-image>${item.caption ? `<figcaption>${escapeHtml(item.caption)}</figcaption>` : ''}</figure>`;
         }).join('')}</div>`;
     }
 
     function answerView(question, session, answer) {
         if (question.type === 'identification') {
             const stateClass = answer?.checked ? (answer.correct ? 'correct' : 'wrong') : '';
-            return `<label class="sr-only" for="identification-answer">Answer</label><input id="identification-answer" class="answer-input ${stateClass}" type="text" autocomplete="off" value="${escapeAttribute(answer?.value || '')}" placeholder="Enter answer" data-identification="${escapeAttribute(question.id)}" ${answer?.checked ? 'disabled' : ''}>`;
+            return `<label class="sr-only" for="identification-answer">Answer</label><input id="identification-answer" class="answer-input ${stateClass}" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" value="${escapeAttribute(answer?.value || '')}" placeholder="Enter answer" data-identification="${escapeAttribute(question.id)}" ${answer?.checked ? 'disabled' : ''}>`;
         }
 
         return `<div class="answers" role="group" aria-label="Answer choices">${questionChoices(question, session).map((choice, index) => {
@@ -320,7 +334,8 @@
                 if (isCorrect) stateClass = 'correct';
                 else if (selected) stateClass = 'wrong';
             }
-            return `<button class="choice ${stateClass}" type="button" data-action="choose" data-question="${escapeAttribute(question.id)}" data-choice="${escapeAttribute(choice.id)}" aria-pressed="${selected}" ${answer?.checked ? 'disabled' : ''}><span class="choice-index">${index + 1}</span><span class="choice-content">${choice.text ? `<span>${escapeHtml(choice.text)}</span>` : ''}${choice.media ? mediaView(choice.media, currentQuizData, 'choice-media') : ''}</span>${answer?.checked && isCorrect ? icon('check') : answer?.checked && selected ? icon('close') : ''}</button>`;
+            const statusIcon = answer?.checked && isCorrect ? icon('check') : answer?.checked && selected ? icon('close') : '';
+            return `<button class="choice ${stateClass}" type="button" data-action="choose" data-question="${escapeAttribute(question.id)}" data-choice="${escapeAttribute(choice.id)}" aria-pressed="${selected}" ${answer?.checked ? 'disabled' : ''}><span class="choice-index">${index + 1}</span><span class="choice-content">${choice.text ? `<span>${escapeHtml(choice.text)}</span>` : ''}${choice.media ? mediaView(choice.media, currentQuizData, 'choice-media') : ''}</span><span class="choice-state" data-choice-state aria-hidden="true">${statusIcon}</span></button>`;
         }).join('')}</div>`;
     }
 
@@ -333,6 +348,96 @@
         return `<div class="feedback ${answer.correct ? '' : 'wrong'}" role="status"><div class="feedback-title">${icon(answer.correct ? 'check' : 'close')}${answer.correct ? 'Correct' : `Incorrect · ${escapeHtml(correctText)}`}</div>${question.explanation ? `<p>${escapeHtml(question.explanation)}</p>` : ''}</div>`;
     }
 
+    function primaryButtonState(session, questionId) {
+        const answer = session.answers[questionId];
+        if (!answer?.checked) {
+            return { action: 'check', label: 'Check', iconName: 'check', disabled: !answer || normalize(answer.value) === '' };
+        }
+        if (sessionProgress(session) === session.sequence.length) {
+            return { action: 'finish', label: 'Finish', iconName: 'flag', disabled: false };
+        }
+        return { action: 'next', label: 'Next unanswered', iconName: 'arrowRight', disabled: false };
+    }
+
+    function syncProgressUi(session) {
+        const checked = sessionProgress(session);
+        const percent = Math.round(checked / session.sequence.length * 100);
+        const checkedLabel = app.querySelector('[data-progress-checked]');
+        const percentLabel = app.querySelector('[data-progress-percent]');
+        const progress = app.querySelector('[data-progress-track]');
+        if (checkedLabel) checkedLabel.textContent = `${checked} of ${session.sequence.length} checked`;
+        if (percentLabel) percentLabel.textContent = `${percent}%`;
+        if (progress) {
+            progress.setAttribute('aria-valuenow', String(percent));
+            const bar = progress.querySelector('span');
+            if (bar) bar.style.width = `${percent}%`;
+        }
+        session.sequence.forEach((id, index) => {
+            const button = app.querySelector(`[data-question-number="${index}"]`);
+            const itemAnswer = session.answers[id];
+            if (!button) return;
+            button.classList.toggle('current', index === session.current);
+            button.classList.toggle('correct', Boolean(itemAnswer?.checked && itemAnswer.correct));
+            button.classList.toggle('wrong', Boolean(itemAnswer?.checked && !itemAnswer.correct));
+            button.setAttribute('aria-current', index === session.current ? 'step' : 'false');
+            const status = itemAnswer?.checked ? (itemAnswer.correct ? ', correct' : ', incorrect') : ', unanswered';
+            button.setAttribute('aria-label', `Question ${index + 1}${status}`);
+        });
+    }
+
+    function syncCurrentAnswerUi(question, session, focusChoice = null) {
+        const answer = session.answers[question.id];
+        if (question.type === 'identification') {
+            const input = app.querySelector('[data-identification]');
+            if (input) {
+                input.disabled = Boolean(answer?.checked);
+                input.classList.toggle('correct', Boolean(answer?.checked && answer.correct));
+                input.classList.toggle('wrong', Boolean(answer?.checked && !answer.correct));
+            }
+        } else {
+            app.querySelectorAll(`.choice[data-question="${CSS.escape(question.id)}"]`).forEach(control => {
+                const choiceId = control.dataset.choice;
+                const selected = answer?.value === choiceId;
+                const correct = question.type === 'true_false'
+                    ? String(question.correctAnswer) === choiceId
+                    : question.correctChoiceId === choiceId;
+                control.disabled = Boolean(answer?.checked);
+                control.setAttribute('aria-pressed', String(selected));
+                control.classList.toggle('selected', Boolean(selected && !answer?.checked));
+                control.classList.toggle('correct', Boolean(answer?.checked && correct));
+                control.classList.toggle('wrong', Boolean(answer?.checked && selected && !correct));
+                const status = control.querySelector('[data-choice-state]');
+                if (status) status.innerHTML = answer?.checked && correct ? icon('check') : answer?.checked && selected ? icon('close') : '';
+            });
+        }
+
+        const feedback = app.querySelector('[data-feedback-region]');
+        if (feedback) feedback.innerHTML = feedbackView(question, answer);
+
+        const primary = app.querySelector('[data-primary-action]');
+        if (primary) {
+            const buttonState = primaryButtonState(session, question.id);
+            primary.dataset.action = buttonState.action;
+            primary.disabled = buttonState.disabled;
+            primary.innerHTML = `${buttonState.label} ${icon(buttonState.iconName)}`;
+        }
+
+        syncProgressUi(session);
+        if (focusChoice) requestAnimationFrame(() => app.querySelector(`[data-choice="${CSS.escape(focusChoice)}"]`)?.focus());
+    }
+
+    function syncNavigatorExpansion(session) {
+        const expanded = Boolean(session.navigatorExpanded);
+        const grid = app.querySelector('[data-number-grid]');
+        const toggle = app.querySelector('[data-action="toggle-navigator"]');
+        grid?.classList.toggle('is-expanded', expanded);
+        if (toggle) {
+            toggle.setAttribute('aria-expanded', String(expanded));
+            toggle.innerHTML = `${icon(expanded ? 'collapse' : 'expand')}<span data-navigator-label>${expanded ? 'Collapse' : 'Show all'}</span>`;
+        }
+        if (expanded) requestAnimationFrame(() => app.querySelector('.question-number.current')?.scrollIntoView({ block: 'nearest', inline: 'nearest' }));
+    }
+
     function quizView() {
         const quiz = currentQuizData;
         const session = currentSession();
@@ -342,28 +447,24 @@
         const answer = session.answers[questionId];
         const checked = sessionProgress(session);
         const percent = Math.round(checked / session.sequence.length * 100);
-        const hasValue = answer && normalize(answer.value) !== '';
-        const finalQuestion = session.current === session.sequence.length - 1;
-        const primaryAction = answer?.checked ? (finalQuestion ? 'finish' : 'next') : 'check';
-        const primaryLabel = answer?.checked ? (finalQuestion ? 'Finish' : 'Next') : 'Check';
-        const originalNumber = quiz.questions.findIndex(item => item.id === questionId) + 1;
+        const primary = primaryButtonState(session, questionId);
+        const navigatorExpanded = Boolean(session.navigatorExpanded);
 
         return `${header()}<section class="quiz-main">
-            <div class="quiz-bar"><button class="button button-quiet" type="button" data-action="exit" aria-label="Exit quiz">${icon('arrowLeft')}<span class="button-label">Exit</span></button><div class="quiz-name"><strong>${escapeHtml(quiz.title)}</strong><span>${session.phase === 'mistakes' ? 'Mistake practice' : `Question ${originalNumber}`}</span></div><div class="quiz-tools"><button class="button button-quiet icon-button" type="button" data-action="shortcuts" aria-label="Keyboard shortcuts">${icon('keyboard')}</button></div></div>
-            <div class="progress-copy"><span>${checked} of ${session.sequence.length} checked</span><span>${percent}%</span></div><div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}"><span style="width:${percent}%"></span></div>
-            <div class="workspace"><aside class="question-side" aria-label="Question navigation"><span class="side-label">Questions</span><div class="number-grid">${session.sequence.map((id, index) => {
+            <div class="quiz-bar"><button class="button button-quiet" type="button" data-action="exit" aria-label="Exit quiz">${icon('arrowLeft')}<span class="button-label">Exit</span></button><div class="quiz-name"><strong>${escapeHtml(quiz.title)}</strong><span>${session.phase === 'mistakes' ? 'Mistake practice' : `Question ${session.current + 1} of ${session.sequence.length}`}</span></div><div class="quiz-tools"><button class="button button-quiet icon-button" type="button" data-action="shortcuts" aria-label="Keyboard shortcuts">${icon('keyboard')}</button></div></div>
+            <div class="progress-copy"><span data-progress-checked>${checked} of ${session.sequence.length} checked</span><span data-progress-percent>${percent}%</span></div><div class="progress-track" data-progress-track role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}"><span style="width:${percent}%"></span></div>
+            <div class="workspace"><aside class="question-side" aria-label="Question navigation"><div class="side-head"><span class="side-label">Questions</span><button class="navigator-toggle" type="button" data-action="toggle-navigator" aria-controls="question-number-grid" aria-expanded="${navigatorExpanded}">${icon(navigatorExpanded ? 'collapse' : 'expand')}<span data-navigator-label>${navigatorExpanded ? 'Collapse' : 'Show all'}</span></button></div><div id="question-number-grid" class="number-grid ${navigatorExpanded ? 'is-expanded' : ''}" data-number-grid>${session.sequence.map((id, index) => {
                 const itemAnswer = session.answers[id];
                 const resultClass = itemAnswer?.checked ? (itemAnswer.correct ? 'correct' : 'wrong') : '';
-                const firstUnchecked = session.sequence.findIndex(sequenceId => !session.answers[sequenceId]?.checked);
-                const accessible = index <= (firstUnchecked === -1 ? session.sequence.length - 1 : firstUnchecked);
-                return `<button class="question-number ${index === session.current ? 'current' : ''} ${resultClass}" type="button" data-action="jump" data-index="${index}" aria-label="Question ${index + 1}" ${accessible ? '' : 'disabled'}>${index + 1}</button>`;
+                const status = itemAnswer?.checked ? (itemAnswer.correct ? ', correct' : ', incorrect') : ', unanswered';
+                return `<button class="question-number ${index === session.current ? 'current' : ''} ${resultClass}" type="button" data-action="jump" data-index="${index}" data-question-number="${index}" aria-current="${index === session.current ? 'step' : 'false'}" aria-label="Question ${index + 1}${status}">${index + 1}</button>`;
             }).join('')}</div><p class="side-note"><kbd>1–9</kbd> choose<br><kbd>Enter</kbd> check / next</p></aside>
             <article class="question-panel"><div class="question-top"><span class="question-label">${session.current + 1} / ${session.sequence.length}</span><span class="question-type">${typeLabel(question.type)}</span></div><h1>${escapeHtml(question.prompt)}</h1>
                 ${question.code ? `<div class="code-block"><div class="code-head"><span>${escapeHtml(question.code.language)}</span><button type="button" data-action="copy-code" data-question="${escapeAttribute(question.id)}">${icon('copy')} Copy</button></div><pre><code>${escapeHtml(question.code.content)}</code></pre></div>` : ''}
                 ${mediaView(question.media, quiz)}
-                ${answerView(question, session, answer)}
-                ${feedbackView(question, answer)}
-                <footer class="question-footer"><button class="button" type="button" data-action="previous" ${session.current === 0 ? 'disabled' : ''}>${icon('arrowLeft')} Previous</button><button class="button button-primary" type="button" data-action="${primaryAction}" ${primaryAction === 'check' && !hasValue ? 'disabled' : ''}>${primaryLabel} ${icon(primaryAction === 'finish' ? 'flag' : primaryAction === 'check' ? 'check' : 'arrowRight')}</button></footer>
+                <div data-answer-region>${answerView(question, session, answer)}</div>
+                <div data-feedback-region>${feedbackView(question, answer)}</div>
+                <footer class="question-footer"><button class="button" type="button" data-action="previous" ${session.current === 0 ? 'disabled' : ''}>${icon('arrowLeft')} Previous</button><button class="button button-primary" type="button" data-primary-action data-action="${primary.action}" ${primary.disabled ? 'disabled' : ''}>${primary.label} ${icon(primary.iconName)}</button></footer>
             </article></div>
         </section>`;
     }
@@ -391,8 +492,8 @@
 
         if (state.modal && options.focusModal !== false) {
             requestAnimationFrame(() => app.querySelector('.modal button, .modal input, .modal select')?.focus());
-        } else if (state.view === 'quiz' && !state.modal) {
-            requestAnimationFrame(() => app.querySelector('[data-identification]:not(:disabled)')?.focus());
+        } else if (state.view === 'quiz' && !state.modal && window.matchMedia('(pointer: fine)').matches) {
+            requestAnimationFrame(() => app.querySelector('[data-identification]:not(:disabled)')?.focus({ preventScroll: true }));
         } else if (options.restoreFocus && lastInvoker) {
             requestAnimationFrame(() => app.querySelector(lastInvoker)?.focus());
         }
@@ -466,8 +567,7 @@
         if (!session || session.answers[questionId]?.checked) return;
         session.answers[questionId] = { value, checked: false, correct: null };
         persist();
-        render({ focusModal: false });
-        requestAnimationFrame(() => app.querySelector(`[data-choice="${CSS.escape(value)}"]`)?.focus());
+        syncCurrentAnswerUi(questionById(questionId), session, value);
     }
 
     function checkCurrent() {
@@ -480,7 +580,7 @@
         answer.checked = true;
         answer.correct = answerIsCorrect(question, answer.value);
         persist();
-        render({ focusModal: false });
+        syncCurrentAnswerUi(question, session);
         announce(answer.correct ? 'Correct.' : 'Incorrect.');
     }
 
@@ -489,11 +589,14 @@
         if (!session) return;
         const questionId = session.sequence[session.current];
         if (!session.answers[questionId]?.checked) return;
-        if (session.current === session.sequence.length - 1) {
+        const nextUnchecked = session.sequence.findIndex((id, index) => index > session.current && !session.answers[id]?.checked);
+        const wrappedUnchecked = session.sequence.findIndex(id => !session.answers[id]?.checked);
+        const nextIndex = nextUnchecked === -1 ? wrappedUnchecked : nextUnchecked;
+        if (nextIndex === -1) {
             finishRound();
             return;
         }
-        session.current += 1;
+        session.current = nextIndex;
         persist();
         render({ focusModal: false });
     }
@@ -571,7 +674,18 @@
         if (action === 'check') { checkCurrent(); return; }
         if (action === 'next' || action === 'finish') { advance(); return; }
         if (action === 'previous') { previousQuestion(); return; }
-        if (action === 'jump') { currentSession().current = Number(control.dataset.index); persist(); render({ focusModal: false }); return; }
+        if (action === 'jump') {
+            const session = currentSession();
+            const index = Number(control.dataset.index);
+            if (!session || !Number.isInteger(index) || index < 0 || index >= session.sequence.length || index === session.current) return;
+            session.current = index; persist(); render({ focusModal: false }); return;
+        }
+        if (action === 'toggle-navigator') {
+            const session = currentSession();
+            if (!session) return;
+            session.navigatorExpanded = !session.navigatorExpanded;
+            persist(); syncNavigatorExpansion(session); return;
+        }
         if (action === 'practice-mistakes') { practiceMistakes(); return; }
         if (action === 'retake-all') {
             const quizMeta = metadata(state.currentQuizId);

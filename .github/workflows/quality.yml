@@ -32,5 +32,8 @@ jobs:
       - name: Validate quiz packages
         run: php spark quizzes:validate
 
+      - name: Check browser JavaScript syntax
+        run: node --check public/assets/js/study-mark.js
+
       - name: Run test suite
         run: vendor/bin/phpunit

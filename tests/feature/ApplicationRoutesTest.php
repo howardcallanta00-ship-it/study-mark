@@ -13,11 +13,12 @@ final class ApplicationRoutesTest extends CIUnitTestCase
     public function testHomePageLoadsApplicationShell(): void
     {
         $result = $this->get('/');
+        $body = (string) $result->response()->getBody();
 
         $result->assertOK();
         $result->assertSee('Study Mark');
-        $result->assertSeeElement('link[rel="stylesheet"][href^="/assets/css/study-mark.css?v="]');
-        $result->assertSeeElement('script[src^="/assets/js/study-mark.js?v="]');
+        $this->assertMatchesRegularExpression('#/assets/css/study-mark\.css\?v=[a-f0-9]{12}#', $body);
+        $this->assertMatchesRegularExpression('#/assets/js/study-mark\.js\?v=[a-f0-9]{12}#', $body);
         $result->assertHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
         $result->assertHeader('X-Content-Type-Options', 'nosniff');
     }

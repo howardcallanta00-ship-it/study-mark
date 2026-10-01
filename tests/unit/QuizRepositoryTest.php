@@ -11,7 +11,10 @@ final class QuizRepositoryTest extends CIUnitTestCase
     {
         $catalog = service('quizRepository', false)->all();
 
-        $this->assertCount(3, $catalog);
+        $this->assertContains(
+            'ccst-networking-reviewer-1',
+            array_column($catalog, 'id')
+        );
         $this->assertSame('accessible-web-interfaces', $catalog[0]['id']);
         $this->assertSame(4, $catalog[0]['questionCount']);
         $this->assertSame(3, $catalog[0]['formatCount']);

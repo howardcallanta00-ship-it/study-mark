@@ -357,7 +357,7 @@ select:focus-visible {
     box-shadow: var(--shadow-small);
 }
 
-.question-side { align-self: start; padding: 15px; }
+.question-side { align-self: start; min-width: 0; padding: 15px; }
 .side-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .side-label { color: var(--muted); font-size: .72rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
 .navigator-toggle { display: none; align-items: center; gap: 5px; min-height: 34px; padding: 5px 9px; border: 1px solid var(--border); border-radius: 9px; color: var(--muted); background: var(--panel-2); font-size: .76rem; font-weight: 750; }
@@ -572,7 +572,7 @@ kbd { padding: 1px 5px; border: 1px solid var(--border); border-bottom-width: 2p
     .workspace { grid-template-columns: 1fr; }
     .question-side { display: block; padding: 10px; }
     .navigator-toggle { display: inline-flex; }
-    .number-grid { display: flex; overflow-x: auto; gap: 7px; margin: 10px 0 0; padding: 1px 0 6px; overscroll-behavior-x: contain; scrollbar-width: thin; }
+    .number-grid { display: flex; width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; gap: 7px; margin: 10px 0 0; padding: 1px 0 6px; overscroll-behavior-x: contain; scrollbar-width: thin; }
     .number-grid.is-expanded { display: grid; grid-template-columns: repeat(auto-fill, minmax(39px, 1fr)); overflow: visible; padding-bottom: 0; }
     .question-number { width: 39px; flex: 0 0 39px; }
     .side-note { display: none; }

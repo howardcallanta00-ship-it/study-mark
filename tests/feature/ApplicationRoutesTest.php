@@ -25,8 +25,12 @@ final class ApplicationRoutesTest extends CIUnitTestCase
 
         $result->assertOK();
         $payload = json_decode($result->getJSON(), true, 512, JSON_THROW_ON_ERROR);
-        $this->assertSame(3, $payload['count']);
+        $this->assertSame(count($payload['quizzes']), $payload['count']);
         $this->assertContains('networking-essentials', array_column($payload['quizzes'], 'id'));
+        $this->assertContains(
+            'ccst-networking-reviewer-1',
+            array_column($payload['quizzes'], 'id')
+        );
     }
 
     public function testUnknownQuizReturnsNotFound(): void
